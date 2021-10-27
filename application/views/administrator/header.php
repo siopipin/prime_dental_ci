@@ -16,13 +16,13 @@
                     <i class="ti-search"></i>
                 </a>
                 <a href="<?php echo base_url(); ?>administrator/dashboard">
-                 <?php if($this->session->userdata('image') != ""){ ?>
-                        <img src="<?php echo base_url(); ?>assets/images/<?php echo $this->session->userdata('site_logo'); ?>" alt="Site Logo" class="img-fluid" style="width: auto; height: 30px;" >
-                    <?php }else{ ?>
-                         <img class="img-fluid" src="<?php echo base_url(); ?>admintemplate/assets/images/logo.png" alt="Theme-Logo" />
+                    <?php if ($this->session->userdata('image') != "") { ?>
+                    <img src="<?php echo base_url(); ?>assets/images/<?php echo $this->session->userdata('site_logo'); ?>"
+                        alt="Site Logo" class="img-fluid" style="width: auto; height: 30px;">
+                    <?php } else { ?>
+                    <img class="img-fluid" src="<?php echo base_url(); ?>admintemplate/assets/images/logo.png"
+                        alt="Theme-Logo" />
                     <?php } ?>
-
-                   
                 </a>
                 <a class="mobile-options">
                     <i class="ti-more"></i>
@@ -167,7 +167,7 @@
                         </li> -->
                     </ul>
                     <ul class="nav-right">
-                       <!--  <li class="header-notification lng-dropdown">
+                        <!--  <li class="header-notification lng-dropdown">
                             <a href="#" id="dropdown-active-item">
                                 <i class="flag-icon flag-icon-gb m-r-5"></i> English
                             </a>
@@ -222,25 +222,27 @@
                                 <span class="badge">9</span>
                             </a>
                         </li> -->
-                         
+
                         <li class="user-profile header-notification">
                             <a href="#!">
-                            <?php if($this->session->userdata('image')){ ?>
-                                <img src="<?php echo base_url(); ?>assets/images/<?php echo $this->session->userdata('image'); ?>" alt="User-Profile-Image" style="border-radius: 25px;">
-                            <?php }else{ ?>
-                                <img src="<?php echo base_url(); ?>admintemplate/assets/images/user.png" alt="User-Profile-Image">
-                            <?php } ?>
+                                <?php if ($this->session->userdata('image')) { ?>
+                                <img src="<?php echo base_url(); ?>assets/images/<?php echo $this->session->userdata('image'); ?>"
+                                    alt="User-Profile-Image" style="border-radius: 25px;">
+                                <?php } else { ?>
+                                <img src="<?php echo base_url(); ?>admintemplate/assets/images/user.png"
+                                    alt="User-Profile-Image">
+                                <?php } ?>
                                 <span><?php echo $this->session->userdata('username'); ?></span>
                                 <i class="ti-angle-down"></i>
                             </a>
                             <ul class="show-notification profile-notification">
-                                
+
                                 <li>
                                     <a href="<?php echo base_url(); ?>administrator/update-profile">
                                         <i class="ti-user"></i> Profile
                                     </a>
                                 </li>
-                                
+
                                 <li>
                                     <a href="<?php echo base_url(); ?>administrator/change-password">
                                         <i class="ti-lock"></i> Change Password
@@ -264,24 +266,27 @@
                             </ul>
                         </li>
                     </ul>
-                  
+
                 </div>
             </div>
         </div>
     </nav>
     <!-- Menu header end -->
-<style type="text/css">
+    <style type="text/css">
     .nav-left-new {
-    display: flex;
-    float: left;
-}
-.nav-left-new > li {
-    padding: 0 45px 0 0;
-}
-.nav-left-new a {
-    color: #ffffff;
-}
-.nav-left-new a:hover {
-    color: rgb(26,188,156);
-}
-</style>
+        display: flex;
+        float: left;
+    }
+
+    .nav-left-new>li {
+        padding: 0 45px 0 0;
+    }
+
+    .nav-left-new a {
+        color: #ffffff;
+    }
+
+    .nav-left-new a:hover {
+        color: rgb(26, 188, 156);
+    }
+    </style>

@@ -17,7 +17,8 @@ $route['posts/(:any)'] = 'posts/view/$1';
 $route['posts'] = 'posts/index';
 $route['default_controller'] = 'pages/view';
 
-//admin routs
+// ===========
+///admin routs
 $route['administrator'] = 'administrator/view';
 $route['administrator/home'] = 'administrator/home';
 $route['administrator/index'] = 'administrator/view';
@@ -32,6 +33,10 @@ $route['administrator/users/add-user'] = 'administrator/add_user';
 $route['administrator/users'] = 'administrator/users';
 $route['administrator/users/update-user/(:any)'] =
     'administrator/update_user/$1';
+
+
+// Router Data Dokter
+
 
 $route['administrator/blogs/add-blog'] = 'administrator/add_blog';
 $route['administrator/blogs/list-blog'] = 'administrator/list_blog';

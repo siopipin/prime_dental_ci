@@ -10,6 +10,7 @@ class Administrator extends CI_Controller
         if (!file_exists(APPPATH . 'views/administrator/' . $page . '.php')) {
             show_404();
         }
+
         $data['title'] = ucfirst($page);
         $this->load->view('administrator/header-script');
         //$this->load->view('administrator/header');
@@ -24,9 +25,11 @@ class Administrator extends CI_Controller
             show_404();
         }
         $data['title'] = ucfirst($page);
+        $css['css'] = 'home';
+
         $this->load->view('administrator/header-script');
         $this->load->view('administrator/header');
-        $this->load->view('administrator/header-bottom');
+        $this->load->view('administrator/header-bottom', $css);
         $this->load->view('administrator/' . $page, $data);
         $this->load->view('administrator/footer');
     }
@@ -37,9 +40,10 @@ class Administrator extends CI_Controller
             show_404();
         }
         $data['title'] = ucfirst($page);
+        $css['css'] = 'home';
         $this->load->view('administrator/header-script');
         $this->load->view('administrator/header');
-        $this->load->view('administrator/header-bottom');
+        $this->load->view('administrator/header-bottom', $css);
         $this->load->view('administrator/' . $page, $data);
         $this->load->view('administrator/footer');
     }
@@ -155,11 +159,12 @@ class Administrator extends CI_Controller
             'Email',
             'required|callback_check_email_exists'
         );
+        $css['css'] = 'add_user';
 
         if ($this->form_validation->run() === false) {
             $this->load->view('administrator/header-script');
             $this->load->view('administrator/header');
-            $this->load->view('administrator/header-bottom');
+            $this->load->view('administrator/header-bottom', $css);
             $this->load->view('administrator/' . $page, $data);
             $this->load->view('administrator/footer');
         } else {
@@ -241,9 +246,11 @@ class Administrator extends CI_Controller
             $offset
         );
 
+        $css['css'] = 'users';
+
         $this->load->view('administrator/header-script');
         $this->load->view('administrator/header');
-        $this->load->view('administrator/header-bottom');
+        $this->load->view('administrator/header-bottom', $css);
         $this->load->view('administrator/users', $data);
         $this->load->view('administrator/footer');
     }
@@ -376,9 +383,7 @@ class Administrator extends CI_Controller
     public function product_categories()
     {
         $data['title'] = 'Product Categories';
-        $data[
-            'product_categories'
-        ] = $this->Administrator_Model->product_categories();
+        $data['product_categories'] = $this->Administrator_Model->product_categories();
 
         $this->load->view('administrator/header-script');
         $this->load->view('administrator/header');
@@ -389,9 +394,7 @@ class Administrator extends CI_Controller
 
     public function update_product_category($id = null)
     {
-        $data[
-            'productcategory'
-        ] = $this->Administrator_Model->update_product_category($id);
+        $data['productcategory'] = $this->Administrator_Model->update_product_category($id);
         //print_r($data['productcategory']);exit;
 
         if (empty($data['productcategory'])) {
@@ -443,9 +446,7 @@ class Administrator extends CI_Controller
             redirect('administrator/index');
         }
 
-        $data[
-            'product_categories'
-        ] = $this->Administrator_Model->product_categories();
+        $data['product_categories'] = $this->Administrator_Model->product_categories();
 
         $data['title'] = 'Create Product';
 
@@ -584,9 +585,7 @@ class Administrator extends CI_Controller
 
     public function update_products($id = null)
     {
-        $data[
-            'product_categories'
-        ] = $this->Administrator_Model->product_categories();
+        $data['product_categories'] = $this->Administrator_Model->product_categories();
         $data['productsDetails'] = $this->Administrator_Model->update_products(
             $id
         );
@@ -645,9 +644,7 @@ class Administrator extends CI_Controller
 
             if (!$this->upload->do_upload()) {
                 $errors = ['error' => $this->upload->display_errors()];
-                $data[
-                    'productsDetails'
-                ] = $this->Administrator_Model->update_products(
+                $data['productsDetails'] = $this->Administrator_Model->update_products(
                     $this->input->post('id')
                 );
                 $post_image = $data['productsDetails']['image'];
@@ -1256,9 +1253,7 @@ class Administrator extends CI_Controller
 
     public function list_blog_comments()
     {
-        $data[
-            'listBlogComments'
-        ] = $this->Administrator_Model->list_blog_comments();
+        $data['listBlogComments'] = $this->Administrator_Model->list_blog_comments();
 
         $data['title'] = 'Blog Comments';
 
@@ -1271,9 +1266,7 @@ class Administrator extends CI_Controller
 
     public function view_blog_comments($id = null)
     {
-        $data[
-            'viewBlogComments'
-        ] = $this->Administrator_Model->view_blog_comments($id);
+        $data['viewBlogComments'] = $this->Administrator_Model->view_blog_comments($id);
         $data['title'] = 'View blog Comments';
 
         $this->load->view('administrator/header-script');
@@ -1290,9 +1283,7 @@ class Administrator extends CI_Controller
             show_404();
         }
 
-        $data[
-            'siteconfiguration'
-        ] = $this->Administrator_Model->get_siteconfiguration();
+        $data['siteconfiguration'] = $this->Administrator_Model->get_siteconfiguration();
 
         $data['title'] = 'Site Configuration';
 
@@ -1305,9 +1296,7 @@ class Administrator extends CI_Controller
 
     public function update_siteconfiguration($id = null)
     {
-        $data[
-            'siteconfiguration'
-        ] = $this->Administrator_Model->update_siteconfiguration($id);
+        $data['siteconfiguration'] = $this->Administrator_Model->update_siteconfiguration($id);
         $data['title'] = 'Update Configuration';
 
         $this->load->view('administrator/header-script');
@@ -1354,9 +1343,7 @@ class Administrator extends CI_Controller
 
             if (!$this->upload->do_upload()) {
                 $errors = ['error' => $this->upload->display_errors()];
-                $data[
-                    'logo_imgs'
-                ] = $this->Administrator_Model->update_siteconfiguration(
+                $data['logo_imgs'] = $this->Administrator_Model->update_siteconfiguration(
                     $this->input->post('id')
                 );
                 $post_image = $data['logo_imgs']['logo_img'];
