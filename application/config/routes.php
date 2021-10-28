@@ -29,13 +29,23 @@ $route['administrator/dashboard'] = 'administrator/dashboard';
 $route['administrator/change-password'] = 'administrator/get_admin_data';
 $route['administrator/update-profile'] = 'administrator/update_admin_profile';
 
-$route['administrator/users/add-user'] = 'administrator/add_user';
-$route['administrator/users'] = 'administrator/users';
+// Routers users
+$route['administrator/users'] = 'Admin/Users_Controller/index';
+$route['administrator/users/add-user'] = 'Admin/Users_Controller/add_user';
+$route['administrator/users/enable/(:any)'] = 'Admin/Users_Controller/enable/$1';
+$route['administrator/users/disable/(:any)'] = 'Admin/Users_Controller/disable/$1';
+$route['administrator/users/delete/(:any)'] = 'Admin/Users_Controller/delete/$1';
 $route['administrator/users/update-user/(:any)'] =
-    'administrator/update_user/$1';
+    'Admin/Users_Controller/update_user/$1';
 
-
-// Router Data Dokter
+// Routers Perawatan
+$route['administrator/perawatan'] = 'Admin/Perawatan_Controller/index';
+$route['administrator/perawatan/jenis'] = 'Admin/Perawatan_Controller/jenis_perawatan';
+$route['administrator/perawatan/enable/(:any)'] = 'Admin/Perawatan_Controller/enablePerawatan/$1';
+$route['administrator/perawatan/disable/(:any)'] = 'Admin/Perawatan_Controller/disablePerawatan/$1';
+$route['administrator/perawatan/delete/(:any)'] = 'Admin/Perawatan_Controller/deletePerawatan/$1';
+$route['administrator/perawatan/update-perawatan/(:any)'] =
+    'Admin/Perawatan_Controller/update_perawatan/$1';
 
 
 $route['administrator/blogs/add-blog'] = 'administrator/add_blog';

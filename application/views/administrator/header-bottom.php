@@ -40,6 +40,8 @@ if ($this->session->userdata('email') == "" && $this->session->userdata('login')
                     <span>Dashboard</span>
                 </a>
             </li>
+
+            <!-- User -->
             <?php $classNameUser = $css == 'users' || $css == 'add_user'  ? 'nav-item has-class' : 'nav-item'; ?>
             <li class="<?php echo $classNameUser; ?>">
                 <a href="#!">
@@ -47,15 +49,37 @@ if ($this->session->userdata('email') == "" && $this->session->userdata('login')
                     <span>Users</span>
                 </a>
                 <ul class="tree-1">
+                    <?php $navlink = $css == 'users' ? 'text-success' : ''; ?>
+                    <li><a class="<?php echo $navlink; ?>" href="<?php echo base_url(); ?>administrator/users">Users</a>
+                    </li>
                     <?php $navlink = $css == 'add_user' ? 'text-success' : ''; ?>
                     <li><a class="<?php echo $navlink; ?>"
                             href="<?php echo base_url(); ?>administrator/users/add-user">Add User</a></li>
-
-                    <?php $navlink = $css == 'users' ? 'text-success' : ''; ?>
-                    <li><a class="<?php echo $navlink; ?>"
-                            href="<?php echo base_url(); ?>administrator/users/users">Users</a></li>
                 </ul>
             </li>
+
+            <!-- Layanan Perawatan -->
+            <?php $classNameUser = $css == 'jenis_perawatan' || $css == 'perawatan'  ? 'nav-item has-class' : 'nav-item'; ?>
+            <li class="<?php echo $classNameUser; ?>">
+                <a href="#!">
+                    <i class="ti-layout"></i>
+                    <span>Layanan Perawatan</span>
+                </a>
+                <ul class="tree-1">
+                    <?php $navlink = $css == 'perawatan' ? 'text-success' : ''; ?>
+                    <li><a class="<?php echo $navlink; ?>"
+                            href="<?php echo base_url(); ?>administrator/perawatan">Perawatan</a></li>
+
+                    <?php $navlink = $css == 'jenis_perawatan' ? 'text-success' : ''; ?>
+                    <li><a class="<?php echo $navlink; ?>"
+                            href="<?php echo base_url(); ?>administrator/perawatan/jenis">Jenis
+                            Perawatan</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
             <li class="nav-item">
                 <a href="#!">
                     <i class="ti-layers"></i>
