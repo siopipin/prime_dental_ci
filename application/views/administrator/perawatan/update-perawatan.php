@@ -48,7 +48,7 @@
                    </div>
                    <div class="card-block">
                        <div class="col-sm-8">
-                           <?php echo form_open_multipart('administrator/update_user_data'); ?>
+                           <?php echo form_open_multipart('administrator/perawatan/do-update-perawatan'); ?>
                            <input type="hidden" name="id" class="form-control"
                                value="<?php echo $row['id_perawatan']; ?>">
                            <div class="form-group row">
@@ -64,22 +64,15 @@
                                <label class="col-sm-2 col-form-label" for="golongandarah">Jenis</label>
                                <div class="col-sm-10">
                                    <select class="form-control" name="jenis_layanan" id="jenis_layanan" required>
-                                       <option value="O"
-                                           <?php if ($row['jenis'] == '1') echo ' selected="selected"'; ?>>
-                                           Golongan O
-                                       </option>
-                                       <option value="A"
-                                           <?php if ($row['jenis'] == '2') echo ' selected="selected"'; ?>>
-                                           Golongan A
-                                       </option>
-                                       <option value="B"
-                                           <?php if ($row['jenis'] == '3') echo ' selected="selected"'; ?>>
-                                           Golongan B
-                                       </option>
-                                       <option value="AB"
-                                           <?php if ($row['jenis'] == '4') echo ' selected="selected"'; ?>>
-                                           Golongan AB
-                                       </option>
+
+                                       <option value="">No Selected</option>
+                                       <?php foreach ($jenisperawatan as $jenis) :
+                                            $selected = $row['id_jenis'] == $jenis['id_jenis'] ? 'selected' : '';
+                                            ?>
+                                       <option value="<?php echo $jenis['id_jenis']; ?>" <?php echo $selected; ?>>
+                                           <?php echo $jenis['nama']; ?></option>
+                                       <?php endforeach; ?>
+
                                    </select>
                                </div>
                            </div>
@@ -101,14 +94,14 @@
                                <label class="col-sm-2 col-form-label">Satuan</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
                                <label>
-                                   <input value="pcs" <?php if ($row['satuan'] == '1') {
+                                   <input value="pcs" <?php if ($row['satuan'] == 'pcs') {
                                                             echo "checked";
                                                         } ?> name="satuan" checked="" type="radio"><i
                                        class="helper"></i> pcs
                                </label>
                                &nbsp;&nbsp;&nbsp;&nbsp;
                                <label>
-                                   <input value="pcs" <?php if ($row['satuan'] == '2') {
+                                   <input value="pcs" <?php if ($row['satuan'] == 'paket') {
                                                             echo "checked";
                                                         } ?> name="satuan" type="radio"><i class="helper"></i> paket
                                </label>
