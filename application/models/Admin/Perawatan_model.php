@@ -14,13 +14,6 @@ class Perawatan_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_jenis_perawatan($username = FALSE, $limit = FALSE, $offset = FALSE)
-    {
-        $query_str = "SELECT * FROM tbl_jenis_perawatan ORDER BY update_at DESC";
-        $query = $this->db->query($query_str);
-        return $query->result_array();
-    }
-
     public function add_perawatan()
     {
         $data = array(
@@ -75,6 +68,45 @@ class Perawatan_model extends CI_Model
     public function deletePerawatan($id, $table)
     {
         $this->db->where('id_perawatan', $id);
+        $this->db->delete($table);
+        return true;
+    }
+
+
+    ///Jenis Perawatan
+    public function get_jenis_perawatan($username = FALSE, $limit = FALSE, $offset = FALSE)
+    {
+        $query_str = "SELECT * FROM tbl_jenis_perawatan ORDER BY update_at DESC";
+        $query = $this->db->query($query_str);
+        return $query->result_array();
+    }
+
+    public function get_jenis_perawatan_byid($id = FALSE)
+    {
+        $CI = get_instance();
+        $CI->load->helper('debug_helper');
+        debug_to_console($id);
+
+        $query_str = "SELECT * FROM tbl_jenis_perawatan WHERE id_jenis = $id";
+        $query = $this->db->query($query_str);
+        return $query->row_array();
+    }
+
+    public function update_jenis_perawatan()
+    {
+        $data = array(
+            'nama' => $this->input->post('jenis_perawatan'),
+            'deskripsi' => $this->input->post('deskripsi'),
+
+        );
+
+        $this->db->where('id_jenis', $this->input->post('id'));
+        $d = $this->db->update('tbl_jenis_perawatan', $data);
+    }
+
+    public function delete_jenis_perawatan($id, $table)
+    {
+        $this->db->where('id_jenis', $id);
         $this->db->delete($table);
         return true;
     }

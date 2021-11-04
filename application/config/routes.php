@@ -41,7 +41,6 @@ $route['administrator/users/update-user/(:any)'] =
 // Routers Perawatan
 $route['administrator/perawatan'] = 'Admin/Perawatan_Controller/index';
 $route['administrator/perawatan/add-perawatan'] = 'Admin/Perawatan_Controller/add_perawatan';
-$route['administrator/perawatan/jenis'] = 'Admin/Perawatan_Controller/jenis_perawatan';
 $route['administrator/perawatan/enable/(:any)'] = 'Admin/Perawatan_Controller/enablePerawatan/$1';
 $route['administrator/perawatan/disable/(:any)'] = 'Admin/Perawatan_Controller/disablePerawatan/$1';
 $route['administrator/perawatan/delete/(:any)'] = 'Admin/Perawatan_Controller/deletePerawatan/$1';
@@ -49,6 +48,14 @@ $route['administrator/perawatan/update-perawatan/(:any)'] =
     'Admin/Perawatan_Controller/update_perawatan/$1';
 $route['administrator/perawatan/do-update-perawatan'] =
     'Admin/Perawatan_Controller/update_perawatan_data';
+
+// Routers Jenis Perawatan
+$route['administrator/perawatan/jenis'] = 'Admin/Perawatan_Controller/jenis_perawatan';
+$route['administrator/perawatan/update-jenis-perawatan/(:any)'] =
+    'Admin/Perawatan_Controller/update_jenis_perawatan/$1';
+$route['administrator/perawatan/do-update-jenis-perawatan'] =
+    'Admin/Perawatan_Controller/update_jenis_perawatan_data';
+$route['administrator/perawatan/delete_jenis_perawatan/(:any)'] = 'Admin/Perawatan_Controller/delete_jenis_perawatan/$1';
 
 
 $route['administrator/blogs/add-blog'] = 'administrator/add_blog';

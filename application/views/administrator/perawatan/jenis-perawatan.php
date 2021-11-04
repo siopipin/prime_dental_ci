@@ -58,25 +58,25 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Nama</th>
                             <th>Deskripsi</th>
                             <th>Updated At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($queryJenisPerawatan as $post) : ?>
+                        <?php foreach ($rows as $row) : ?>
                         <tr>
-                            <td><?php echo $post['id_jenis']; ?></td>
-                            <td><a><?php echo $post['nama']; ?></a></td>
-                            <td><?php echo $post['deskripsi']; ?></td>
-                            <td><?php echo date("M d,Y", strtotime($post['update_at'])); ?></td>
+                            <td><?php echo $row['id_jenis']; ?></td>
+                            <td><a><?php echo $row['nama']; ?></a></td>
+                            <td><?php echo $row['deskripsi']; ?></td>
+                            <td><?php echo date("M d,Y", strtotime($row['update_at'])); ?></td>
                             <td>
 
                                 <a class="label label-inverse-info"
-                                    href='<?php echo base_url(); ?>administrator/users/update-user/<?php echo $post['id_jenis']; ?>'>Edit</a>
+                                    href='<?php echo base_url(); ?>administrator/perawatan/update-jenis-perawatan/<?php echo $row['id_jenis']; ?>'>Edit</a>
                                 <a class="label label-inverse-danger delete"
-                                    href='<?php echo base_url(); ?>administrator/users/delete/<?php echo $post['id_jenis']; ?>?table=<?php echo base64_encode('users'); ?>'>Delete</a>
+                                    href='<?php echo base_url(); ?>administrator/perawatan/delete_jenis_perawatan/<?php echo $row['id_jenis']; ?>?table=<?php echo base64_encode('tbl_jenis_perawatan'); ?>'>Delete</a>
 
                             </td>
                         </tr>

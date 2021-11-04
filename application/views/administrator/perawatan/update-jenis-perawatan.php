@@ -14,7 +14,7 @@
 
    <div class="page-header">
        <div class="page-header-title">
-           <h4>Layanan Perawatan</h4>
+           <h4>Jenis Perawatan</h4>
        </div>
        <div class="page-header-breadcrumb">
            <ul class="breadcrumb-title">
@@ -25,7 +25,7 @@
                </li>
                <li class="breadcrumb-item"><a href="#!">Perawatan</a>
                </li>
-               <li class="breadcrumb-item"><a href="#!">Update Perawatan</a>
+               <li class="breadcrumb-item"><a href="#!">Update Jenis Perawatan</a>
                </li>
            </ul>
        </div>
@@ -38,7 +38,7 @@
                <!-- Basic Form Inputs card start -->
                <div class="card">
                    <div class="card-header">
-                       <h5>Update Perawatan -- <small
+                       <h5>Update Jenis Perawatan Perawatan -- <small
                                style="text-decoration: underline;"><?php echo $row['nama']; ?></small></h5>
                        <div class="card-header-right">
                            <i class="icofont icofont-rounded-down"></i>
@@ -48,33 +48,17 @@
                    </div>
                    <div class="card-block">
                        <div class="col-sm-8">
-                           <?php echo form_open_multipart('administrator/perawatan/do-update-perawatan'); ?>
-                           <input type="hidden" name="id" class="form-control"
-                               value="<?php echo $row['id_perawatan']; ?>">
+                           <?php echo form_open_multipart('administrator/perawatan/do-update-jenis-perawatan'); ?>
+                           <input type="hidden" name="id" class="form-control" value="<?php echo $row['id_jenis']; ?>">
                            <div class="form-group row">
-                               <label class="col-sm-2 col-form-label">Nama Perawatan</label>
+                               <label class="col-sm-2 col-form-label">Jenis Perawatan</label>
                                <div class="col-sm-10">
-                                   <input type="text" name="nama_perawatan" class="form-control"
-                                       value="<?php echo $row['nama']; ?>" placeholder="Nama Perawatan">
+                                   <input type="text" name="jenis_perawatan" class="form-control"
+                                       value="<?php echo $row['nama']; ?>" placeholder="Jenis Perawatan">
                                </div>
                            </div>
 
-                           <div class="form-group row">
-                               <label class="col-sm-2 col-form-label" for="golongandarah">Jenis</label>
-                               <div class="col-sm-10">
-                                   <select class="form-control" name="jenis_layanan" id="jenis_layanan" required>
 
-                                       <option value="">No Selected</option>
-                                       <?php foreach ($jenisperawatan as $jenis) :
-                                            $selected = $row['id_jenis'] == $jenis['id_jenis'] ? 'selected' : '';
-                                            ?>
-                                       <option value="<?php echo $jenis['id_jenis']; ?>" <?php echo $selected; ?>>
-                                           <?php echo $jenis['nama']; ?></option>
-                                       <?php endforeach; ?>
-
-                                   </select>
-                               </div>
-                           </div>
                            <div class="form-group row">
                                <label class="col-sm-2 col-form-label">Deskripsi</label>
                                <div class="col-sm-10">
@@ -82,41 +66,7 @@
                                        value="<?php echo $row['deskripsi']; ?>" placeholder="Deskripsi">
                                </div>
                            </div>
-                           <div class="form-group row">
-                               <label class="col-sm-2 col-form-label">Biaya</label>
-                               <div class="col-sm-10">
-                                   <input type="text" name="biaya" value="<?php echo $row['biaya']; ?>"
-                                       class="form-control" placeholder="Biaya (Rp)">
-                               </div>
-                           </div>
-                           <div class="form-group row" style="float:center;">
-                               <label class="col-sm-2 col-form-label">Satuan</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                               <label>
-                                   <input value="pcs" <?php if ($row['satuan'] == 'pcs') {
-                                                            echo "checked";
-                                                        } ?> name="satuan" checked="" type="radio"><i
-                                       class="helper"></i> pcs
-                               </label>
-                               &nbsp;&nbsp;&nbsp;&nbsp;
-                               <label>
-                                   <input value="pcs" <?php if ($row['satuan'] == 'paket') {
-                                                            echo "checked";
-                                                        } ?> name="satuan" type="radio"><i class="helper"></i> paket
-                               </label>
-                           </div>
-
-
-                           <div class="form-group row">
-                               <label class="col-sm-2 col-form-label">Enable?</label>
-                               <div class="col-sm-3">
-                                   <input type="checkbox" value="<?php echo $row['status']; ?>" name="status"
-                                       class="js-single"
-                                       <?php if ($row['status'] == '1') {
-                                                                                                                                    echo "checked";
-                                                                                                                                } ?> />
-                               </div>
-                           </div>
 
                            <div class="form-group row">
                                <label class="col-sm-2 col-form-label"></label>
@@ -124,7 +74,7 @@
                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                </div>
                            </div>
-                           <textarea id="description" style="visibility: hidden;"></textarea>
+                           <textarea id="jenisperawatan" style="visibility: hidden;"></textarea>
                            </form>
                        </div>
 
