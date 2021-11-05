@@ -249,6 +249,68 @@ class Perawatan_Controller extends CI_Controller
         $this->load->view('administrator/footer');
     }
 
+    public function add_jenis_perawatan($offset = 0, $page = 'perawatan/jenis-perawatan')
+    {
+
+        $CI = get_instance();
+        $CI->load->helper('debug_helper');
+
+        // Check login
+        if (!$this->session->userdata('login')) {
+            redirect('administrator/index');
+        }
+
+
+        // Pagination Config
+        $config['base_url'] = base_url() . 'administrator/perawatan/jenis/';
+        $config['total_rows'] = $this->db->count_all('tbl_jenis_perawatan');
+        $config['per_page'] = 10;
+        $config['uri_segment'] = 10;
+        $config['attributes'] = ['class' => 'paginate-link'];
+
+        // Init Pagination
+        $this->pagination->initialize($config);
+
+        $data['title'] = 'Jenis Perawatan';
+
+        $data['rows'] = $this->Perawatan_model->get_jenis_perawatan(
+            false,
+            $config['per_page'],
+            $offset
+        );
+
+        $css['css'] = 'jenis_perawatan';
+
+        $this->form_validation->set_rules('jenis_perawatan', 'Jenis Perawatan', 'required');
+        $this->form_validation->set_rules(
+            'deskripsi',
+            'deskripsi',
+            'required'
+        );
+
+
+        if ($this->form_validation->run() === false) {
+            debug_to_console('false');
+            $this->load->view('administrator/header-script');
+            $this->load->view('administrator/header');
+            $this->load->view('administrator/header-bottom', $css);
+            $this->load->view('administrator/' . $page, $data);
+            $this->load->view('administrator/footer');
+        } else {
+            debug_to_console('menyimpan');
+
+            //Simpan ke database
+            $this->Perawatan_model->add_jenis_perawatan();
+
+            //Set Message
+            $this->session->set_flashdata(
+                'success',
+                'Jenis Perawatan has been created Successfull.'
+            );
+            redirect('Admin/Perawatan_Controller/jenis_perawatan');
+        }
+    }
+
     public function update_jenis_perawatan($id = null)
     {
         $data['row'] = $this->Perawatan_model->get_jenis_perawatan_byid($id);

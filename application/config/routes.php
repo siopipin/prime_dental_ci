@@ -51,6 +51,7 @@ $route['administrator/perawatan/do-update-perawatan'] =
 
 // Routers Jenis Perawatan
 $route['administrator/perawatan/jenis'] = 'Admin/Perawatan_Controller/jenis_perawatan';
+$route['administrator/perawatan/add-jenis-perawatan'] = 'Admin/Perawatan_Controller/add_jenis_perawatan';
 $route['administrator/perawatan/update-jenis-perawatan/(:any)'] =
     'Admin/Perawatan_Controller/update_jenis_perawatan/$1';
 $route['administrator/perawatan/do-update-jenis-perawatan'] =

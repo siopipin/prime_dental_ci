@@ -49,6 +49,11 @@ $(document).ready(function() {
 <!-- Page-header end -->
 <!-- Page-body start -->
 <div class="page-body">
+    <div>
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#formModalJenisPerawatan">
+            <i class="fas fa-plus"></i> Tambah Jenis Perawatan
+        </button>
+    </div>
     <!-- DOM/Jquery table start -->
 
     <div class="card">
@@ -93,4 +98,40 @@ $(document).ready(function() {
         </div>
     </div>
     <!-- DOM/Jquery table end -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="formModalJenisPerawatan" tabindex="-1" aria-labelledby="formModalLabelDokter"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabelJenisPerawatan">Tambah Data Jenis perawatan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php echo form_open_multipart('administrator/perawatan/add-jenis-perawatan'); ?>
+                <div class="form-group">
+                    <label for="nama">Jenis Perawatan</label>
+                    <input type="text" name="jenis_perawatan" id="jenis_perawatan" class="form-control">
+                    <small class="muted text-danger"><?= form_error('jenis_perawatan'); ?></small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi</label>
+                    <input type="text" name="deskripsi" id="deskripsi" class="form-control">
+                    <small class="muted text-danger"><?= form_error('deskripsi'); ?></small>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
+                </div>
+                <?= form_close(); ?>
+            </div>
+        </div>
+    </div>
 </div>

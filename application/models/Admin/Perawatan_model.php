@@ -92,6 +92,15 @@ class Perawatan_model extends CI_Model
         return $query->row_array();
     }
 
+    public function add_jenis_perawatan()
+    {
+        $data = array(
+            'nama' => $this->input->post('jenis_perawatan'),
+            'deskripsi' => $this->input->post('deskripsi'),
+        );
+        return $this->db->insert('tbl_jenis_perawatan', $data);
+    }
+
     public function update_jenis_perawatan()
     {
         $data = array(
